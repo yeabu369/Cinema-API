@@ -39,32 +39,33 @@ const signUp = async (req, res) => {
     try {
 
         let user = await User.findOne({ where: { Email : email }});
+
+        if (user) return res.status(400).json({ message: "User already exists" });
         
-        if (!user) {
-            user = await User.create({
-                FullName: `${firstname} ${lastname}`,
-                Email: email,
-                Password: bcrypt.hashSync(password, 12)
+        user = await User.create({
+            FullName: `${firstname} ${lastname}`,
+            Email: email,
+            Password: bcrypt.hashSync(password, 12)
+        });
+
+        const token = jwt.sign( { email: user.email, id: user.id }, secret, { expiresIn: "1d" } );
+
+        if (roles) {
+            const Roles = await Role.findAll({
+                where: { Type: { [Op.or]: roles } }
             });
 
-            const token = jwt.sign( { email: user.email, id: user.id }, secret, { expiresIn: "1d" } );
-                
-            if (roles) {
-                // TODO: Check if each role in roles exist in ROLE
-                const Roles = await Role.findAll({
-                    where: { Type: { [Op.or]: roles } }
-                });
+            console.log(Roles);
+            await user.setRoles(Roles);
+            return res.status(201).json({ user, token });
+        } else {
 
-                await user.setRoles(Roles);
-                return res.status(201).json(user);
-            } else {
-
-                await user.setRoles([1]);
-                return res.status(201).json(user);
-            }
-        }
-        else {
-            return res.status(403).json({ message: "User already exists!" });
+            const defaultRole = await Role.findOne({ where: {
+                id: 1
+            }});
+            
+            const role = await user.setRoles(defaultRole);
+            return res.status(201).json({ user, token });
         }
         
     } catch (err) {
