@@ -52,7 +52,7 @@ const signUp = async (req, res) => {
             if (roles) {
                 // TODO: Check if each role in roles exist in ROLE
                 const Roles = await Role.findAll({
-                    where: { name: { [Op.or]: roles } }
+                    where: { Type: { [Op.or]: roles } }
                 });
 
                 await user.setRoles(Roles);
