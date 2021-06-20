@@ -34,4 +34,24 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+db.ROLES = ['user', 'admin', 'moderator'];
+
+const InitRoles = async (Role) => {
+  const existingRoles = await Role.findAll();
+
+  if (existingRoles.length === 0)
+    db.ROLES.forEach(async role => {
+      console.log(role);
+      try {
+        const result = await Role.create({ Type: role });
+        console.log(result);
+      } catch (err) {
+        console.log("Entering duplicates");
+      }
+    });
+    
+};
+
+InitRoles(db.Role);
+
 module.exports = db;

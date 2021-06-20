@@ -5,6 +5,8 @@ const { User, Role, ROLES, Sequelize } = require('../models');
 
 const Op = Sequelize.Op;
 
+const secret = 'test';
+
 const getAuth = (req, res) => {
     return res.render('Auth', { title: 'Auth'})
 };
@@ -42,8 +44,10 @@ const signUp = async (req, res) => {
             user = await User.create({
                 FullName: `${firstname} ${lastname}`,
                 Email: email,
-                Password: password
+                Password: bcrypt.hashSync(password, 12)
             });
+
+            const token = jwt.sign( { email: user.email, id: user.id }, secret, { expiresIn: "1d" } );
                 
             if (roles) {
                 // TODO: Check if each role in roles exist in ROLE
@@ -51,7 +55,6 @@ const signUp = async (req, res) => {
                     where: { name: { [Op.or]: roles } }
                 });
 
-                // console.log(Roles);
                 await user.setRoles(Roles);
                 return res.status(201).json(user);
             } else {
@@ -66,8 +69,8 @@ const signUp = async (req, res) => {
         
     } catch (err) {
 
+        res.status(500).json({ message: "Something went wrong" });
         console.log(err);
-        res.status(500).json({ message: err });
     }
 }
 
