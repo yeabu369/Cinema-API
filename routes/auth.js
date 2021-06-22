@@ -5,7 +5,7 @@ var controller = require('../controllers/auth');
 
 /* GET users listing. */
 router.get('/', controller.getAuth);
-router.post('/signIn', controller.signIn);
-router.post('/signUp', controller.signUp);
+router.post('/signin', controller.signIn);
+router.post('/signup', controller.signUp);
 
 module.exports = router;
