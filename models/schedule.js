@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.hasMany(Ticket);
       this.belongsTo(Hall);
-      this.belongsToMany(Movie);
+      this.hasOne(Movie);
     }
   };
 

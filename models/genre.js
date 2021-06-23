@@ -13,9 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ Movie }) {
       // define association here
       this.belongsToMany(Movie, {
-        through: 'MovieGenre',
-        onDelete: '',
-        onUpdate: ''
+        through: 'MovieGenre'
       });
     }
   };
