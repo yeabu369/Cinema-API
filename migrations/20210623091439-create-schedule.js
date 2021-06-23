@@ -8,8 +8,25 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      ShowTime: {
-        type: Sequelize.DATE
+      HallId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      MovieId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      Starts: {
+        type: DataTypes.DATE,
+        allowNull: false,
+      },
+      Ends: {
+        type: DataTypes.DATE,
+        allowNull: false,
+      },
+      EntryPrice: {
+        type: DataTypes.FLOAT,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
