@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ Role }) {
       // define association here
       this.belongsToMany(Role, {
-        through: 'UserRoles'
+        through: 'UserRole'
       });
     }
   };

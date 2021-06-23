@@ -1,8 +1,9 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
+
   class Vendor extends Model {
     /**
      * Helper method for defining associations.
@@ -13,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
+
   Vendor.init({
     TicketsSold: DataTypes.INTEGER,
     OutOfTickets: DataTypes.BOOLEAN
@@ -20,5 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Vendor',
   });
+
   return Vendor;
+  
 };
