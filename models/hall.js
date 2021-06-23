@@ -17,10 +17,18 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   Hall.init({
-    AvailableSeats: DataTypes.INTEGER,
-    TotalSeats: DataTypes.INTEGER,
-    IsFull: DataTypes.BOOLEAN,
-    Type: DataTypes.STRING
+    AvailableSeats: {
+      type: DataTypes.INTEGER
+    },
+    TotalSeats: {
+      type: DataTypes.INTEGER
+    },
+    IsFull: {
+      type: DataTypes.BOOLEAN
+    },
+    Type: {
+      type: DataTypes.STRING
+    }
   }, {
     sequelize,
     modelName: 'Hall',
