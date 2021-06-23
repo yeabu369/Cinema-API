@@ -11,11 +11,12 @@ module.exports = {
       AvailableSeats: {
         type: Sequelize.INTEGER
       },
-      TotalSeats: {
+      Capacity: {
         type: Sequelize.INTEGER
       },
       IsFull: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       },
       Type: {
         type: Sequelize.STRING

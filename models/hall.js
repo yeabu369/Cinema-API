@@ -20,11 +20,12 @@ module.exports = (sequelize, DataTypes) => {
     AvailableSeats: {
       type: DataTypes.INTEGER
     },
-    TotalSeats: {
+    Capacity: {
       type: DataTypes.INTEGER
     },
     IsFull: {
-      type: DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     },
     Type: {
       type: DataTypes.STRING
