@@ -3,6 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
+
   class Ticket extends Model {
     /**
      * Helper method for defining associations.
@@ -13,12 +14,33 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
+
   Ticket.init({
-    Price: DataTypes.FLOAT,
-    IsExpired: DataTypes.BOOLEAN
+    SeatId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    IssuedBy: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    ScheduleId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    PaidFor: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
   }, {
     sequelize,
     modelName: 'Ticket',
   });
+  
   return Ticket;
+  
 };

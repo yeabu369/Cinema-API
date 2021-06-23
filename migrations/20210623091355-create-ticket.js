@@ -8,11 +8,25 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      Price: {
-        type: Sequelize.FLOAT
+      SeatId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
       },
-      IsExpired: {
-        type: Sequelize.BOOLEAN
+      UserId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      IssuedBy: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      ScheduleId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      PaidFor: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
       },
       createdAt: {
         allowNull: false,
