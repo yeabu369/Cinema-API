@@ -9,7 +9,8 @@ module.exports = {
         type: DataTypes.INTEGER
       },
       Taken: {
-        type: DataTypes.BOOLEAN
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
       },
       Type: {
         type: DataTypes.STRING
