@@ -9,10 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       Number: {
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER,
+        allowNull: false
       },
-      Seats: {
-        type: Sequelize.INTEGER
+      TotalSeats: {
+        type: DataTypes.INTEGER,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
