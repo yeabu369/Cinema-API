@@ -10,12 +10,16 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ Genre }) {
+    static associate({ Genre, Language }) {
       // define association here
       this.belongsToMany(Genre, {
         through: 'MovieGenre',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
+      });
+      
+      this.belongsToMany(Language, {
+        through: 'MovieLanguage'
       });
     }
   };
