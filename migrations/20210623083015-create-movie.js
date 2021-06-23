@@ -9,13 +9,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       Title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      DurationInHours: {
+      DurationInMin: {
         type: Sequelize.INTEGER
-      },
-      Type: {
-        type: Sequelize.STRING
       },
       DebutsAt: {
         type: Sequelize.DATE
@@ -25,9 +23,6 @@ module.exports = {
       },
       Synopsis: {
         type: Sequelize.TEXT
-      },
-      Likes: {
-        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
