@@ -17,8 +17,16 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   Seat.init({
-    Taken: DataTypes.BOOLEAN,
-    Type: DataTypes.STRING
+    Taken: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    Type: {
+      type: DataTypes.STRING,
+    },
+    RowId: {
+      type: DataTypes.INTEGER
+    }
   }, {
     sequelize,
     modelName: 'Seat',

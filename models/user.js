@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         through: 'UserRole'
       });
 
-      this.hasOne(MovieCard, {
+      this.hasMany(MovieCard, {
         foreignKey: 'Creator'
       });
 

@@ -13,7 +13,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ Seat, Hall }) {
       // define association here
       this.hasMany(Seat);
-      this.belongsTo(Hall);
     }
   };
 
@@ -23,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     TotalSeats: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    HallId: {
       type: DataTypes.INTEGER,
       allowNull: false
     }
