@@ -22,13 +22,16 @@ const signIn = async (req, res) => {
         if (!user)
             res.status(404).json({ message: "User doesn't exist" });
 
-        const isPasswordCorrect = await bcrypt.compare(password, user.password);
+        const isPasswordCorrect = bcrypt.compareSync(password, user.Password);
 
         if (!isPasswordCorrect) return res.status(400).json({ message: "Invalid credentials" });
 
-        res.status(200).json({ result: user, token });
+        const token = jwt.sign({ email: user.email, id: user.id }, secret, { expiresIn: "1h" });
+
+        return res.status(200).json({ result: user, token });
     } catch (err) {
-        res.status(500).json({ message: "Something went wrong" });
+        console.log(err);
+        return res.status(500).json({ message: "Something went wrong" });
     }
 }
 
