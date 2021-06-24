@@ -20,7 +20,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'Creator'
       });
 
-      this.hasMany(Ticket);
+      this.hasMany(Ticket, {
+        foreignKey: 'UserId'
+      });
     }
   };
 

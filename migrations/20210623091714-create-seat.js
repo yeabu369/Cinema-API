@@ -16,7 +16,11 @@ module.exports = {
         type: DataTypes.STRING
       },
       RowId: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'Row',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,

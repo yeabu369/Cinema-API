@@ -18,19 +18,35 @@ module.exports = (sequelize, DataTypes) => {
   Ticket.init({
     SeatId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'Seat',
+        key: 'id'
+      }
     },
     UserId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'User',
+        key: 'id'
+      }
     },
     IssuedBy: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'User',
+        key: 'id'
+      }
     },
     ScheduleId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'Schedule',
+        key: 'id'
+      }
     },
     PaidFor: {
       type: DataTypes.BOOLEAN,

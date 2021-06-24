@@ -22,9 +22,13 @@ module.exports = (sequelize, DataTypes) => {
         through: 'MovieLanguage'
       });
 
-      this.hasOne(MovieCard);
+      this.hasOne(MovieCard, {
+        foreignKey: 'MovieId'
+      });
 
-      this.hasMany(Schedule);
+      this.hasMany(Schedule, {
+        foreignKey: 'MovieId'
+      });
     }
   };
 

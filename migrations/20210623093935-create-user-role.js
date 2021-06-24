@@ -3,10 +3,18 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('UserRoles', {
       UserId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'User',
+          key: 'id'
+        }
       },
       RoleId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Role',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,

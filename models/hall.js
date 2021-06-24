@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ Row, Schedule }) {
       // define association here
       this.hasMany(Row);
-      this.hasOne(Schedule);
+      this.hasMany(Schedule);
     }
   };
 

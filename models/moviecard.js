@@ -18,14 +18,22 @@ module.exports = (sequelize, DataTypes) => {
   MovieCard.init({
     MovieId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'Movie',
+        key: 'id'
+      }
     },
     Poster: {
       type: DataTypes.STRING
     },
     Creator: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'User',
+        key: 'id'
+      }
     }
   }, {
     sequelize,

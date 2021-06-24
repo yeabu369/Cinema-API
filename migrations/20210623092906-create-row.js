@@ -18,7 +18,11 @@ module.exports = {
       },
       HallId: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'Hall',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,

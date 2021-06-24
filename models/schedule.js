@@ -12,18 +12,28 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ Ticket }) {
       // define association here
-      this.hasMany(Ticket);
+      this.hasMany(Ticket, {
+        foreignKey: 'ScheduleId'
+      });
     }
   };
 
   Schedule.init({
     HallId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'Hall',
+        key: 'id'
+      }
     },
     MovieId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'Movie',
+        key: 'id'
+      }
     },
     Starts: {
       type: DataTypes.DATE,

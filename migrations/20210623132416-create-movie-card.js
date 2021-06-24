@@ -1,33 +1,43 @@
 'use strict';
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  up: async (queryInterface, DataTypes) => {
     await queryInterface.createTable('MovieCards', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER
       },
       MovieId: {
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Movie',
+          key: 'id'
+        }
       },
       Poster: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       Creator: {
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'User',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       }
     });
   },
-  down: async (queryInterface, Sequelize) => {
+  down: async (queryInterface, DataTypes) => {
     await queryInterface.dropTable('MovieCards');
   }
 };

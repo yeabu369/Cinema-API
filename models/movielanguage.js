@@ -1,8 +1,9 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
+
   class MovieLanguage extends Model {
     /**
      * Helper method for defining associations.
@@ -13,12 +14,28 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
+
   MovieLanguage.init({
-    MoviedId: DataTypes.INTEGER,
-    LanguageId: DataTypes.INTEGER
+    MoviedId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Movie',
+        key: 'id'
+      },
+      allowNull: false
+    },
+    LanguageId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Movie',
+        key: 'id'
+      },
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'MovieLanguage',
   });
+
   return MovieLanguage;
 };

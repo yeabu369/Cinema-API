@@ -27,7 +27,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     HallId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'Hall',
+        key: 'id'
+      }
     }
   }, {
     sequelize,
