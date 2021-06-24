@@ -10,11 +10,19 @@ module.exports = {
       },
       HallId: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'halls',
+          key: 'id'
+        }
       },
       MovieId: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'movies',
+          key: 'id'
+        }
       },
       Starts: {
         type: DataTypes.DATE,
@@ -27,6 +35,14 @@ module.exports = {
       EntryPrice: {
         type: DataTypes.FLOAT,
         allowNull: false
+      },
+      createdBy: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'users',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,

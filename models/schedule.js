@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'Hall',
+        model: 'halls',
         key: 'id'
       }
     },
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'Movie',
+        model: 'movies',
         key: 'id'
       }
     },
@@ -46,7 +46,15 @@ module.exports = (sequelize, DataTypes) => {
     EntryPrice: {
       type: DataTypes.FLOAT,
       allowNull: false
-    }
+    },
+    createdBy: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'users',
+        key: 'id'
+      }
+    },
   }, {
     sequelize,
     modelName: 'Schedule',

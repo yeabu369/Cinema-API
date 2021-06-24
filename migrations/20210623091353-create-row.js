@@ -1,24 +1,26 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, DataTypes) => {
-    await queryInterface.createTable('Seats', {
+    await queryInterface.createTable('Rows', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      Taken: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
-      },
-      Type: {
-        type: DataTypes.STRING
-      },
-      RowId: {
+      Number: {
         type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      TotalSeats: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      HallId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
         references: {
-          model: 'Row',
+          model: 'halls',
           key: 'id'
         }
       },
@@ -33,6 +35,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, DataTypes) => {
-    await queryInterface.dropTable('Seats');
+    await queryInterface.dropTable('Rows');
   }
 };

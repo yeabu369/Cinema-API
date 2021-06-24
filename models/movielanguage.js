@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     MoviedId: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'Movie',
+        model: 'movies',
         key: 'id'
       },
       allowNull: false
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     LanguageId: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'Movie',
+        model: 'languages',
         key: 'id'
       },
       allowNull: false
