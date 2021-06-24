@@ -51,7 +51,7 @@ const signUp = async (req, res) => {
             Password: bcrypt.hashSync(password, 12)
         });
 
-        const token = jwt.sign( { email: user.email, id: user.id }, secret, { expiresIn: "1d" } );
+        const token = jwt.sign( { email: user.email, id: user.id }, secret, { expiresIn: "1h" } );
 
         if (roles) {
             const Roles = await Role.findAll({
