@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   MovieLanguage.init({
-    MoviedId: {
+    MovieId: {
       type: DataTypes.INTEGER,
       references: {
         model: 'movies',

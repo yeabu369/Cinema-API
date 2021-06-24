@@ -5,7 +5,7 @@ module.exports = {
       MovieId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Movie',
+          model: 'movies',
           key: 'id'
         },
         allowNull: false
@@ -13,7 +13,7 @@ module.exports = {
       GenreId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Genre',
+          model: 'genres',
           key: 'id'
         },
         allowNull: false

@@ -19,14 +19,14 @@ module.exports = (sequelize, DataTypes) => {
     MovieId: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'Movie',
+        model: 'movies',
         key: 'id'
       }
     },
     GenreId: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'Genre',
+        model: 'genres',
         key: 'id'
       }
     }
